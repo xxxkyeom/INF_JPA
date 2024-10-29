@@ -25,4 +25,21 @@ public class OrderItem {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id")
     private Item item;
+
+    // 생성 메서드
+    public static OrderItem createOrderItem(int orderPrice, int count, Item item) {
+        OrderItem orderItem = new OrderItem();
+        orderItem.setItem(item);
+        orderItem.setOrderPrice(orderPrice);
+        orderItem.setCount(count);
+
+        item.removeStock(count);
+
+        return orderItem;
+    }
+
+    //-- 비즈니스 로직 --
+    public void cancel() {
+        getItem().addStock(this.count);
+    }
 }
