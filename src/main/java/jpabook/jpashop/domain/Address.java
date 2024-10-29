@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 
 @Embeddable
 @Getter
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
+@AllArgsConstructor
 public class Address {
 
     private String street;
